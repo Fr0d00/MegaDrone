@@ -3,9 +3,10 @@
 
 #include <Arduino.h>
 
-struct  RadioData
+struct RadioData
 {
-    RadioData(byte speed = 0, byte x = 0, byte y = 0){
+    RadioData(byte speed = 0, byte x = 0, byte y = 0)
+    {
         this->speed = speed;
         this->x = x;
         this->y = y;
@@ -28,12 +29,19 @@ struct GyroData
     float z;
 };
 
-struct motorData
+struct MotorData
 {
-  int FR;
-  int FL;
-  int BR;
-  int BL;
+    MotorData(int FR = 0, int FL = 0, int BR = 0, int BL = 0)
+    {
+        this->BL = BL;
+        this->BR = BR;
+        this->FL = FL;
+        this->FR = FR;
+    }
+    int FR;
+    int FL;
+    int BR;
+    int BL;
 };
 
 #endif
