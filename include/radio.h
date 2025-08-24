@@ -6,6 +6,8 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
+#include "structures.h"
+
 /*
     Radio.h 
     This file contains all needed radio methods
@@ -14,18 +16,6 @@
     void readRadio(RadioData* data) - receving radio data. data - pointer to RadioData structure which contains data
 
 */
-
-struct  RadioData
-{
-    RadioData(byte speed = 0, byte x = 0, byte y = 0){
-        this->speed = speed;
-        this->x = x;
-        this->y = y;
-    }
-    byte speed;
-    byte x;
-    byte y;
-};
 
 RF24 radio(7, 8);
 

@@ -5,11 +5,15 @@
 /*
   WORKTYPE 0 = radio read
   WORKTYPE 1 = Scan Radio Frequencies
-  WROKTYPE 2 = Read MPU6050
+  WORKTYPE 2 = Read MPU6050
 */
+
+#include "structures.h"
 
 #include "radio.h"
 #include "gyro.h"
+#include "regulator.h"
+
 
 RadioData dataRadio;
 GyroData dataGyro;

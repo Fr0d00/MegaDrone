@@ -6,23 +6,13 @@
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 
+#include "structures.h"
+
 volatile bool mpuFlag = false; // флаг прерывания готовности
 uint8_t fifoBuffer[45];        // буфер
 
 MPU6050 mpu;
 
-struct GyroData
-{
-    GyroData(float x = 0, float y = 0, float z = 0)
-    {
-        this->x = x;
-        this->y = y;
-        this->z = z;
-    }
-    float x;
-    float y;
-    float z;
-};
 
 void dmpReady()
 {
