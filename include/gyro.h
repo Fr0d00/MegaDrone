@@ -38,6 +38,8 @@ void setupGyro()
     attachInterrupt(0, dmpReady, RISING);
 }
 
+
+
 void readGyro(GyroData *data)
 {
     float ypr[3];

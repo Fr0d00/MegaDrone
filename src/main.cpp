@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#define WORKTYPE 2
+#define WORKTYPE 0
 
 /*
   WORKTYPE 0 = radio read
@@ -48,11 +48,14 @@ void loop(){
 
 
 void setup(){
+  Serial.begin(9600);
   setupGyro();
 }
 
 void loop(){
   readGyro(&dataGyro);
+  Serial.print(mpuFlag);
+  Serial.print(" | ");
   Serial.print(dataGyro.x);
   Serial.print(" | ");
   Serial.print(dataGyro.y);
