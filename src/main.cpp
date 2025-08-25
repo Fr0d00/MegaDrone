@@ -78,13 +78,15 @@ void setup()
 {
   Serial.begin(9600);
   setupMotors();
-  pinMode(A1, INPUT);
+  pinMode(A0, INPUT);
 }
 
 void loop(){
-  int val = map(analogRead(A1), 0, 1024, 1000, 1800);
+  int val = map(analogRead(A0), 0, 1024, 1000, 1800);
   Serial.println(val);
   writeMotors(&MotorData(val, 1000, 1000, 1000));
 }
+
+
 
 #endif
