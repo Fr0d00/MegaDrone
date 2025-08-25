@@ -9,18 +9,18 @@ Servo M_FR, M_FL, M_BR, M_BL;
 
 void setupMotors()
 {
-    M_FR.attach(3, 1000, 2000);
-    M_FL.attach(4, 1000, 2000);
-    M_BR.attach(5, 1000, 2000);
-    M_BL.attach(6, 1000, 2000);
+    M_FR.attach(3, 800, 2200);
+    M_FL.attach(4, 800, 2200);
+    M_BR.attach(5, 800, 2200);
+    M_BL.attach(6, 800, 2200);
 }
 
 void writeMotors(MotorData *data)
-{
-    M_FR.write(constrain(data->FR, 1000, 1800));
-    M_FL.write(constrain(data->FL, 1000, 1800));
-    M_BR.write(constrain(data->BR, 1000, 1800));
-    M_BL.write(constrain(data->BL, 1000, 1800));
+{   
+    M_FR.write(map(data->FR, 0, 100, 800, 1566));
+    M_FL.write(map(data->FL,0, 100, 803, 1593));
+    M_BR.write(map(data->BR,0, 100, 1044, 1531));
+    M_BL.write(map(data->BL,0, 100, 801, 1600));
 }
 
 #endif
