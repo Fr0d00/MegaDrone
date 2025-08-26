@@ -14,13 +14,12 @@
 
 
 void regulateXY(GyroData* data, MotorData* mData, byte speed, byte targetX, byte targetY){
-    speed = map(speed, 0, 255, 0, 100);
     float uX = _calc_pid(data->x - float(map((targetX - 127), -128, 127, -15, 15)), Pk);
     float uY = _calc_pid(data->y - float(map((targetY - 127), -128, 127, -15, 15)), Pk);
-    mData->FL = constrain(speed + (uX - uY), 0, 100);
-    mData->FR = constrain(speed + (uX + uY), 0, 100);
-    mData->BL = constrain(speed + (-uX - uY), 0, 100);
-    mData->BR = constrain(speed + (uY - uX), 0, 100);
+    mData->FL = constrain(speed + (uX - uY), 0, 255);
+    mData->FR = constrain(speed + (uX + uY), 0, 255);
+    mData->BL = constrain(speed + (-uX - uY), 0, 255);
+    mData->BR = constrain(speed + (uY - uX), 0, 255);
 }
 
 #endif

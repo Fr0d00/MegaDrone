@@ -31,17 +31,17 @@ struct GyroData
 
 struct MotorData
 {
-    MotorData(int FR = 0, int FL = 0, int BR = 0, int BL = 0)
+    MotorData(byte FR = 0, byte FL = 0, byte BR = 0, byte BL = 0)
     {
         this->BL = BL;
         this->BR = BR;
         this->FL = FL;
         this->FR = FR;
     }
-    int FR;
-    int FL;
-    int BR;
-    int BL;
+    byte FR;
+    byte FL;
+    byte BR;
+    byte BL;
 };
 
 #endif
