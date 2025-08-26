@@ -1,12 +1,13 @@
 #include <Arduino.h>
 
-#define WORKTYPE 3
+#define WORKTYPE 4
 
 /*
   WORKTYPE 0 = radio read
   WORKTYPE 1 = Scan Radio Frequencies
   WORKTYPE 2 = Read MPU6050
   WORKTYPE 3 = Motor Test (only one motor) with data from potentiometer;
+  WORKTYPE 4 = Fly Mode
 */
 
 #include "structures.h"
@@ -24,7 +25,6 @@ void setup()
 {
   Serial.begin(9600);
   setupRadio(0);
-  setupMotors();
 }
 
 void loop()
@@ -87,6 +87,27 @@ void loop(){
   writeMotors(&MotorData(val, 1000, 1000, 1000));
 }
 
+#elif WORKTYPE == 4
+
+RadioData dataRadio;
+GyroData dataGyro;
+MotorData dataMotors;
+
+void setup(){
+  Serial.begin(9600);
+  setupRadio(0);
+  setupGyro();
+  setupMotors();
+  delay(1000);
+}
+
+
+void loop(){
+  readRadio(&dataRadio);
+  readGyro(&dataGyro);
+  regulateXY(&dataGyro, &dataMotors, &dataRadio);
+  writeMotors(&dataMotors);
+}
 
 
 #endif
