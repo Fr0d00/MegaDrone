@@ -9,7 +9,7 @@
 #include "structures.h"
 
 /*
-    Radio.h 
+    Radio.h
     This file contains all needed radio methods
 
     void setupRadio(byte channel) - radio initialization and reading pipe opening. channel - Which RF channel to communicate 0-127
@@ -37,11 +37,21 @@ void setupRadio(byte channel)
     radio.startListening();
 }
 
-void readRadio(RadioData* data)
-{   
+void readRadio(RadioData *data, bool printData = false)
+{
     if (radio.available())
     {
         radio.read(data, sizeof(RadioData));
+        if (printData)
+        {
+            Serial.print("Radio data: ");
+            Serial.print(data->speed);
+            Serial.print(" | ");
+            Serial.print(data->x);
+            Serial.print(" | ");
+            Serial.print(data->y);
+            Serial.print(" | ");
+        }
     }
 }
 
@@ -111,4 +121,3 @@ void radioLoop(void)
 }
 
 #endif
-

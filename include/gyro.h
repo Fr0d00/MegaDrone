@@ -30,7 +30,7 @@ void setupGyro()
 
 
 
-void readGyro(GyroData *data)
+void readGyro(GyroData *data, bool printData = false)
 {
     float ypr[3];
     if (mpuFlag && mpu.dmpGetCurrentFIFOPacket(fifoBuffer))
@@ -45,9 +45,18 @@ void readGyro(GyroData *data)
         mpu.dmpGetYawPitchRoll(ypr, &q, &gravity);
         mpuFlag = false;
     }
-    data->x = degrees(ypr[2]) + 0.7;
-    data->y = degrees(ypr[1]) - 2.5;
+    data->x = -(degrees(ypr[2]) + 0.3);
+    data->y = -(degrees(ypr[1]) + 3.3);
     data->z = degrees(ypr[0]);
+    if(printData){
+        Serial.print("Gyro data: ");
+        Serial.print(data->x);
+        Serial.print(" | ");
+        Serial.print(data->y);
+        Serial.print(" | ");
+        Serial.print(data->z);
+        Serial.print(" | ");
+    }
 }
 
 #endif

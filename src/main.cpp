@@ -16,6 +16,7 @@
 #include "gyro.h"
 #include "regulator.h"
 #include "motor.h"
+#include "memoryCheck.h"
 
 #if WORKTYPE == 0
 
@@ -98,7 +99,7 @@ void setup(){
   setupRadio(0);
   setupGyro();
   setupMotors();
-  delay(1000);
+  //delay(2000);
 }
 
 
@@ -106,6 +107,8 @@ void loop(){
   readRadio(&dataRadio);
   readGyro(&dataGyro);
   regulateXY(&dataGyro, &dataMotors, &dataRadio);
+  Serial.print("Free RAM: ");
+  Serial.println(memoryFree());
   writeMotors(&dataMotors);
 }
 

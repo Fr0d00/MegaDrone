@@ -26,18 +26,31 @@ Servo M_FR, M_FL, M_BR, M_BL;
 
 void setupMotors()
 {
-    M_FR.attach(3, 800, 2200);
-    M_FL.attach(4, 800, 2200);
-    M_BR.attach(5, 800, 2200);
-    M_BL.attach(6, 800, 2200);
+    M_FR.attach(4);
+    M_FL.attach(5);
+    M_BR.attach(6); 
+    M_BL.attach(7);
+    delay(3000);
+    M_FL.writeMicroseconds(2200);
+    M_FR.writeMicroseconds(2200);
+    M_BL.writeMicroseconds(2200);
+    M_BR.writeMicroseconds(2200);
+    delay(3000);
+    M_FL.writeMicroseconds(800);
+    M_FR.writeMicroseconds(800);
+    M_BL.writeMicroseconds(800);
+    M_BR.writeMicroseconds(800);
+    delay(3000);
+
+
 }
 
 void writeMotors(MotorData *data)
 {
-    M_FR.write(map(data->FR, 0, 255, FR_LOW, FR_UP));
-    M_FL.write(map(data->FL, 0, 255, FL_LOW, FL_UP));
-    M_BR.write(map(data->BR, 0, 255, BR_LOW, BR_UP));
-    M_BL.write(map(data->BL, 0, 255, BL_LOW, BL_UP));
+    M_FR.writeMicroseconds(map(data->FR, 0, 255, FR_LOW, FR_UP));
+    M_FL.writeMicroseconds(map(data->FL, 0, 255, FL_LOW, FL_UP));
+    M_BR.writeMicroseconds(map(data->BR, 0, 255, BR_LOW, BR_UP));
+    M_BL.writeMicroseconds(map(data->BL, 0, 255, BL_LOW, BL_UP));
 }
 
 #endif
