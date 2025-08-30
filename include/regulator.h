@@ -5,8 +5,8 @@
 
 #include "structures.h"
 
-#define Pk 1
-#define Dk 20
+#define Pk 3.5
+#define Dk 50
 #define Ik 0.01
 
 #define _calc_pid(error, errOld, pKoff, dKoff) (error * pKoff) + ((error - errOld) * dKoff)
